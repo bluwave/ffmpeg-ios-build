@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLATFORMBASE=$(xcode-select -print-path)"/Platforms"
-IOSSDKVERSION=5.0
+IOSSDKVERSION=5.1
 
 set -e
 
@@ -14,7 +14,7 @@ then
 fi
 
 #ARCHS=${ARCHS:-"armv6 armv7 i386"}
-ARCHS=${ARCHS:-"armv7 i386"}
+ARCHS=${ARCHS:-"armv6 armv7 i386"}
 
 for ARCH in $ARCHS
 do
@@ -45,7 +45,7 @@ do
             IOSSDK=iPhoneOS${IOSSDKVERSION}
             ;;
         i386)
-            EXTRA_FLAGS="--enable-pic"
+            EXTRA_FLAGS="--enable-pic --disable-yasm"
             EXTRA_CFLAGS=""
             PLATFORM="${PLATFORMBASE}/iPhoneSimulator.platform"
             IOSSDK=iPhoneSimulator${IOSSDKVERSION}
